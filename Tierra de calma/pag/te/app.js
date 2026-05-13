@@ -25,10 +25,19 @@ async function createPreferenceSingleItem({ title, unit_price, payerEmail }) {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      items: [{ title, quantity: 1, unit_price }],
-      payerEmail: payerEmail || ""
-    }),
-  });
+  items,
+  payerEmail: mail,
+
+  customer: {
+    name,
+    email: mail,
+    document: document.getElementById('chkDni')?.value.trim() || "",
+    address: document.getElementById('chkAddr')?.value.trim() || "",
+    phone: document.getElementById('chkPhone')?.value.trim() || ""
+  },
+
+  note: document.getElementById('chkNote')?.value.trim() || ""
+})
 
   if (!res.ok) {
     const t = await res.text().catch(() => "");
