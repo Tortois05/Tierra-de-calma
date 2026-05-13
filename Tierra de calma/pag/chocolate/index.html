@@ -270,54 +270,36 @@
 
     <div style="display:flex;flex-direction:column;gap:16px;">
 
-      <input
-        type="text"
-        placeholder="Tu nombre"
-        style="
-          padding:14px;
-          border-radius:14px;
-          border:1px solid #c7a27c;
-          background:white;
-          color:#2b1a10;
-        "
-      >
+     <input
+  id="contactName"
+  type="text"
+  placeholder="Tu nombre"
+  style="padding:14px;border-radius:14px;border:1px solid #c7a27c;background:white;color:#2b1a10;"
+>
 
-      <input
-        type="email"
-        placeholder="tu@correo.com"
-        style="
-          padding:14px;
-          border-radius:14px;
-          border:1px solid #c7a27c;
-          background:white;
-          color:#2b1a10;
-        "
-      >
+<input
+  id="contactMail"
+  type="email"
+  placeholder="tu@correo.com"
+  style="padding:14px;border-radius:14px;border:1px solid #c7a27c;background:white;color:#2b1a10;"
+>
 
-      <textarea
-        rows="5"
-        placeholder="Escribí tu consulta..."
-        style="
-          padding:14px;
-          border-radius:14px;
-          border:1px solid #c7a27c;
-          background:white;
-          color:#2b1a10;
-          resize:none;
-        "
-      ></textarea>
+<textarea
+  id="contactMessage"
+  rows="5"
+  placeholder="Escribí tu consulta..."
+  style="padding:14px;border-radius:14px;border:1px solid #c7a27c;background:white;color:#2b1a10;resize:none;"
+></textarea>
 
-      <button style="
-        padding:15px;
-        border:none;
-        border-radius:999px;
-        background:#8b5a2b;
-        color:white;
-        font-weight:600;
-        cursor:pointer;
-      ">
-        Enviar consulta
-      </button>
+<button
+  id="sendContactBtn"
+  type="button"
+  style="padding:15px;border:none;border-radius:999px;background:#8b5a2b;color:white;font-weight:600;cursor:pointer;"
+>
+  Enviar consulta
+</button>
+
+<p id="contactStatus" style="margin:0;color:#6a5443;font-size:14px;"></p>
 
     </div>
   </div>
