@@ -332,3 +332,39 @@ document.addEventListener('click', (e) => {
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeAboutModal();
 });
+
+document.getElementById("sendContactBtn")?.addEventListener("click", async () => {
+  const name = document.getElementById("contactName")?.value.trim();
+  const email = document.getElementById("contactMail")?.value.trim();
+  const message = document.getElementById("contactMessage")?.value.trim();
+  const status = document.getElementById("contactStatus");
+
+  if (!name || !email || !message) {
+    if (status) status.textContent = "Completá nombre, correo y mensaje.";
+    return;
+  }
+
+  const BACKEND = "https://tierra-de-calma-backend.onrender.com";
+
+  try {
+    if (status) status.textContent = "Enviando consulta...";
+
+    const r = await fetch(`${BACKEND}/send_contact`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, message })
+    });
+
+    if (!r.ok) throw new Error("Error enviando consulta");
+
+    if (status) status.textContent = "Consulta enviada correctamente. Te responderemos pronto.";
+
+    document.getElementById("contactName").value = "";
+    document.getElementById("contactMail").value = "";
+    document.getElementById("contactMessage").value = "";
+
+  } catch (err) {
+    console.error(err);
+    if (status) status.textContent = "No se pudo enviar la consulta. Probá de nuevo.";
+  }
+});
