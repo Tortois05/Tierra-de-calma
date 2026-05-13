@@ -156,8 +156,8 @@ document.addEventListener('DOMContentLoaded', () => {
     customer: {
       name,
       email: mail,
-      document: document.getElementById('chkDoc')?.value.trim() || "",
-      address: document.getElementById('chkAddress')?.value.trim() || "",
+      document: document.getElementById('chkDni')?.value.trim() || "",
+address: document.getElementById('chkAddr')?.value.trim() || "",
       phone: document.getElementById('chkPhone')?.value.trim() || ""
     },
 
