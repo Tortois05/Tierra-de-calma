@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tierra de calma — Chocolates Artesanales</title>
+
+  <!-- Fuentes y CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Almendra+SC&family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        
+        
+      </div>
+      <div class="actions">
+        <button class="icon-btn" id="loginBtn">Iniciar sesión</button>
+        <div class="user-pill" id="userPill" style="display:none">
+  <div class="avatar" id="userAvatar">U</div>
+  <span id="userName">Usuario</span>
+  <button class="icon-btn" id="logoutBtn">Salir</button>
+</div>
+
+        <button class="icon-btn" id="cartBtn">Carrito <span class="badge" id="cartCount">0</span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Portadas dinámicas / hero -->
+<section class="hero" id="hero">
+  <div class="hero-controls" id="heroDots"></div>
+</section>
+
+<!-- Modal Quiénes Somos -->
+<div class="modal" id="aboutModal">
+  <div class="sheet about-sheet">
+    <div class="about-head">
+      <h4 id="aboutTitle">Quiénes somos</h4>
+      <button class="btn ghost" id="closeAbout" type="button">Cerrar</button>
+    </div>
+    <p class="muted" id="aboutBody"></p>
+  </div>
+</div>
+
+
+
+  <!-- Catálogo -->
+  <section class="container section">
+    <div id="catalogo-secciones"></div>
+  </section>
+ 
+
+  <!-- Drawer Carrito -->
+  <div class="drawer" id="drawer">
+    <div class="backdrop" data-close-drawer></div>
+    <aside class="panel">
+      <div class="row"><h4>Tu carrito</h4><button class="icon-btn" data-close-drawer>Seguir comprando</button></div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="total">
+        <strong>Total</strong>
+        <strong id="cartTotal">$0</strong>
+      </div>
+      <button class="checkout" id="checkoutBtn">Ir al checkout</button>
+    </aside>
+  </div>
+
+  <!-- Modal Login -->
+  <div class="modal" id="loginModal">
+<div class="sheet auth-sheet">
+  <div class="auth-tabs" role="tablist" aria-label="Autenticación">
+    <button class="auth-tab is-active" id="tabLogin" type="button" role="tab" aria-selected="true">
+      Iniciar sesión
+    </button>
+    <button class="auth-tab" id="tabRegister" type="button" role="tab" aria-selected="false">
+      Registrarse
+    </button>
+  </div>
+
+  <!-- LOGIN -->
+  <div id="loginPanel" class="auth-panel" role="tabpanel" aria-labelledby="tabLogin">
+    <h4 class="auth-title">Iniciar sesión</h4>
+    <p class="muted">Para continuar con tu compra, iniciá sesión.</p>
+
+    <div class="field">
+      <label>Email</label>
+      <input class="input" id="email" type="email" placeholder="tu@correo.com" autocomplete="email"/>
+      <div class="auth-error" id="errLoginEmail"></div>
+    </div>
+
+    <div class="field">
+      <label>Contraseña</label>
+      <div class="auth-passrow">
+        <input class="input" id="password" type="password" placeholder="••••••" autocomplete="current-password"/>
+        <button class="auth-eye" id="togglePassLogin" type="button" aria-label="Mostrar/ocultar contraseña">👁</button>
+      </div>
+      <div class="auth-error" id="errLoginPass"></div>
+    </div>
+
+    <div class="auth-row">
+      <label class="auth-check">
+        <input type="checkbox" id="rememberMe" />
+        <span>Recordarme</span>
+      </label>
+      <a href="#" class="auth-link" id="forgotPass">¿Olvidaste tu contraseña?</a>
+    </div>
+
+    <div class="auth-actions">
+      <button class="btn ghost" data-close-login>Cancelar</button>
+      <button class="btn primary" id="doLogin" type="button">Entrar</button>
+    </div>
+    <div class="auth-divider"><span>o</span></div>
+
+<button class="btn ghost google-btn" id="googleLogin" type="button" style="width:100%">
+  <span class="g-icon" aria-hidden="true">
+    <svg viewBox="0 0 48 48" width="18" height="18">
+      <path fill="#EA4335" d="M24 9.5c3.54 0 6.29 1.52 7.73 2.79l5.3-5.3C33.87 4.05 29.4 2 24 2 14.73 2 6.83 7.39 3.3 15.23l6.17 4.78C11.04 13.27 16.96 9.5 24 9.5z"/>
+      <path fill="#4285F4" d="M46.1 24.5c0-1.64-.15-2.86-.47-4.13H24v7.82h12.65c-.26 2.03-1.67 5.08-4.8 7.13l7.38 5.71c4.43-4.09 6.87-10.1 6.87-14.53z"/>
+      <path fill="#FBBC05" d="M9.47 28.01A14.5 14.5 0 0 1 8.7 24c0-1.4.24-2.75.72-4.01l-6.17-4.78A23.98 23.98 0 0 0 2 24c0 3.87.93 7.53 2.58 10.79l6.89-6.78z"/>
+      <path fill="#34A853" d="M24 46c6.4 0 11.77-2.1 15.7-5.72l-7.38-5.71c-1.98 1.38-4.64 2.34-8.32 2.34-7.04 0-12.96-3.77-14.53-9.01l-6.89 6.78C6.83 40.61 14.73 46 24 46z"/>
+    </svg>
+  </span>
+  <span>Continuar con Google</span>
+</button>
+
+    <div class="auth-foot">
+      ¿No tenés cuenta? <a href="#" id="goRegister">Registrate</a>
+    </div>
+  </div>
+
+  <!-- REGISTER -->
+  <div id="registerPanel" class="auth-panel hidden" role="tabpanel" aria-labelledby="tabRegister">
+    <h4 class="auth-title">Crear cuenta</h4>
+    <p class="muted">Registro simple y rápido.</p>
+
+    <div class="field">
+      <label>Nombre</label>
+      <input class="input" id="regName" placeholder="Tu nombre" autocomplete="name"/>
+      <div class="auth-error" id="errRegName"></div>
+    </div>
+
+    <div class="field">
+      <label>Email</label>
+      <input class="input" id="regEmail" type="email" placeholder="tu@correo.com" autocomplete="email"/>
+      <div class="auth-error" id="errRegEmail"></div>
+    </div>
+
+    <div class="field">
+      <label>Contraseña</label>
+      <div class="auth-passrow">
+        <input class="input" id="regPass" type="password" placeholder="••••••" autocomplete="new-password"/>
+        <button class="auth-eye" id="togglePassReg" type="button" aria-label="Mostrar/ocultar contraseña">👁</button>
+      </div>
+      <div class="auth-hint">Mínimo 6 caracteres.</div>
+      <div class="auth-error" id="errRegPass"></div>
+    </div>
+
+    <div class="field">
+      <label>Repetir contraseña</label>
+      <input class="input" id="regPass2" type="password" placeholder="••••••" autocomplete="new-password"/>
+      <div class="auth-error" id="errRegPass2"></div>
+    </div>
+
+    <button class="btn primary" id="doRegister" type="button" style="width:100%">Crear cuenta</button>
+
+    <div class="auth-divider"><span>o</span></div>
+
+    <div class="auth-foot">
+      ¿Ya tenés cuenta? <a href="#" id="goLogin">Iniciar sesión</a>
+    </div>
+
+    <div class="auth-actions">
+      <button class="btn ghost" data-close-login>Cancelar</button>
+    </div>
+  </div>
+</div>
+
+
+  
+
+  <!-- REGISTRO -->
+  <div id="registerBlock" class="auth-block hidden">
+    <div class="field"><label>Nombre</label><input class="input" id="regName" placeholder="Tu nombre"/></div>
+    <div class="field"><label>Email</label><input class="input" id="regEmail" type="email" placeholder="tu@correo.com"/></div>
+    <div class="field"><label>Contraseña</label><input class="input" id="regPass" type="password" placeholder="••••••"/></div>
+
+    <button class="btn primary" id="doRegister" style="width:100%">Crear cuenta</button>
+    <button class="btn ghost google-btn" id="googleSignup">Continuar con Google</button>
+
+    <div class="auth-linkrow">
+      <span>¿Ya tenés cuenta? <a href="#" id="openLogin">Iniciar sesión</a></span>
+      <span></span>
+    </div>
+
+    <div class="auth-actions">
+      <button class="btn ghost" data-close-login>Cancelar</button>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+  <!-- Modal Checkout -->
+  <div class="modal" id="checkoutModal">
+    <div class="sheet">
+      <h4>Checkout</h4>
+      <p class="muted">Completá tus datos para pagar. (Integración de pago lista para conectar)</p>
+      <div class="row-gap">
+        <div class="field" style="flex:1">
+          <label>Nombre y apellido</label>
+          <input class="input" id="chkName" placeholder="Nicolás Avila"/>
+        </div>
+        <div class="field" style="flex:1">
+          <label>Documento</label>
+          <input class="input" id="chkDni" placeholder="DNI / CUIT"/>
+        </div>
+      </div>
+      <div class="field"><label>Dirección</label><input class="input" id="chkAddr" placeholder="Calle 123, Villa Mercedes"/></div>
+      <div class="field"><label>Correo</label><input class="input" id="chkMail" placeholder="tu@correo.com"/></div>
+      <div class="field"><label>Teléfono</label><input class="input" id="chkPhone" placeholder="11 1234 5678"/></div>
+      <div class="field">
+        <label>Método de pago</label>
+        <select class="input" id="chkMethod">
+          <option value="mp">Mercado Pago (recomendado)</option>
+          <option value="tdc">Tarjeta de crédito</option>
+          <option value="efc">Efectivo/Transferencia</option>
+        </select>
+      </div>
+      <div class="row" style="align-items:center;justify-content:space-between;margin-top:4px">
+        <div class="muted" id="chkSummary">Total a pagar: $0</div>
+        <button class="btn primary" id="payNow">Pagar ahora</button>
+      </div>
+      <footer>
+        <button class="btn ghost" data-close-checkout>Cancelar</button>
+      </footer>
+    </div>
+  </div>
+
+  <footer>
+    © <span id="year"></span> Tierra de Calma — Villa Mercedes, San Luis
+  </footer>
+
+  <!-- JS: orden importante -->
+  <script src="utils.js"></script>
+  <script src="auth.js"></script>
+  <script src="cart.js"></script>
+  <script src="app.js"></script>
+
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+  <div id="loader" class="loader hidden" aria-hidden="false">
+  <div class="loader-card">
+    <div class="spinner"></div>
+    <div class="loader-text">Cargando…</div>
+  </div>
+</div>
+
+</body>
+</html>

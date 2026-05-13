@@ -1,0 +1,641 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Casa de Té en Hebras</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="https://sdk.mercadopago.com/js/v2"></script>
+
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <a class="brand" href="#inicio" aria-label="Ir al inicio">
+      <img class="brand__logo" src="img/Tierra-de-calma.png" alt="Logo Tierra de Calma" />
+      <span class="brand__name">Tierra de Calma</span>
+    </a>
+
+    
+<div class="userWrap" id="userWrap" hidden>
+  <button class="userSession" id="userSessionBtn" type="button" aria-expanded="false">
+  <img class="userAvatar" id="userAvatar" alt="Foto de perfil" hidden>
+  <span class="userName" id="userName"></span>
+</button>
+
+
+  <div class="userMenu" id="userMenu" hidden>
+    <a href="#pedidos" class="userMenuItem">Pedidos</a>
+    <a href="#contacto" class="userMenuItem">Contacto</a>
+    <button class="userMenuItem danger" id="logoutBtn" type="button">Cerrar sesión</button>
+  </div>
+</div>
+
+    <button class="menuBtn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="menu" id="menu" aria-label="Menú principal">
+      <a href="#inicio">Inicio</a>
+      <a href="#contacto">Contacto</a>
+      <button class="menu__cta menu__login" id="openLoginFromMenu" type="button">Iniciar sesión</button>
+    </nav>
+  </header>
+
+  <!-- Hero / Inicio -->
+  <main id="inicio">
+    <section class="hero">
+      <div class="hero__content">
+        <p class="badge">Casa de té · Hebras premium</p>
+        <h1>
+          Creemos en lo natural, en lo hecho a mano, en lo auténtico. Por eso, seleccionamos ingredientes nobles,
+          combinando sabores con historia y cuidamos cada presentación para que cada entrega sea un mimo al alma.
+        </h1>
+        <p class="subtitle">
+          Explorá cada variedad como si estuvieras en una casa de té real: aroma, cuerpo, notas y momento ideal.
+        </p>
+
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#tes">Ver variedades</a>
+        </div>
+
+        <!-- Música Spotify -->
+        <div class="music" id="music">
+          <div class="music__head">
+            <h3>Sonidos de calma o compañía para el momento de TÉ</h3>
+          </div>
+
+          <div class="spotifyGrid">
+            <div class="spotifyCard">
+              <div class="spotifyTitle">Música relajante</div>
+              <iframe
+                class="spotifyFrame"
+                style="border-radius:14px"
+                src="https://open.spotify.com/embed/playlist/0l4oGMSRJ2lhAQcSouIfMi"
+                width="100%"
+                height="352"
+                frameborder="0"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy">
+              </iframe>
+            </div>
+
+            <div class="spotifyCard">
+              <div class="spotifyTitle">Té de calma</div>
+              <iframe
+                class="spotifyFrame"
+                style="border-radius:14px"
+                src="https://open.spotify.com/embed/playlist/4LtA31grodAwOJRPVAceiP"
+                width="100%"
+                height="352"
+                frameborder="0"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy">
+              </iframe>
+            </div>
+          </div>
+
+          <small class="muted">
+            *Disfrutá de unas canciones para ese momento de calma.
+          </small>
+        </div>
+      </div>
+
+      <div class="hero__panel">
+        <div class="card card--glass">
+          <h3>Recomendación rápida</h3>
+          <p class="muted">Si querés algo suave y aromático:</p>
+          <div class="pillRow">
+            <span class="pill">Tereré Tropical</span>
+            <span class="pill">Relajante Suave</span>
+            <span class="pill">Mate Energía Natural</span>
+          </div>
+          <a class="link" href="#tes">Ir a las variedades →</a>
+            <div class="miniGallery">
+  <img src="img/Momentos 1.jpeg" alt="Tierra de Calma - ambiente" loading="lazy">
+  <img src="img/Momentos 2.jpeg" alt="Tierra de Calma - hebras" loading="lazy">
+</div>
+        </div>
+      
+
+      </div>
+    </section>
+
+    <!-- Línea TERERÉ -->
+    <section class="section section--terere" id="terere">
+      <div class="section__head">
+        <h2>Línea TERERÉ</h2>
+        <p class="muted">Para días de calor. Refresca con calma.</p>
+      </div>
+
+      <div class="grid">
+        <article class="teaCard" data-tea="terere-tropical">
+          <div class="teaCard__top">
+            <span class="tag">Tereré</span>
+            <h3>Tereré Tropical</h3>
+            <div class="teaCard__media">
+              <img src="img/Terere - Tropical.jpeg" alt="Tereré Tropical" loading="lazy">
+            </div>
+            <p class="muted">
+              Mezcla coco, hibiscus, naranja desecada y cedrón para una experiencia frutal, vibrante y veraniega.
+            </p>
+          </div>
+          <ul class="teaSpecs">
+            <li><strong>Notas:</strong> Coco, Hibiscus, Cedrón</li>
+            <li><strong>Intensidad:</strong> Aromático</li>
+            <li><strong>Momento:</strong> Descanso</li>
+          </ul>
+          <div class="teaCard__actions">
+            <button class="btn btn--primary buyNow" type="button">Comprar ahora</button>
+            <button class="btn btn--ghost details" type="button">Ver más</button>
+          </div>
+        </article>
+
+        <article class="teaCard" data-tea="terere-despeja">
+          <div class="teaCard__top">
+            <span class="tag">Tereré</span>
+            <h3>Despeja Todo</h3>
+            <div class="teaCard__media">
+              <img src="img/Terere - Despeja.jpeg" alt="Despeja Todo" loading="lazy">
+            </div>
+            <p class="muted">
+              Eucalipto, jengibre, citronela y canela quebrada: refrescante con un fondo cálido y especiado.
+            </p>
+          </div>
+          <ul class="teaSpecs">
+            <li><strong>Notas:</strong> Claridad y frescura</li>
+            <li><strong>Intensidad:</strong> Media</li>
+            <li><strong>Momento:</strong> Cansancio / estrés</li>
+          </ul>
+          <div class="teaCard__actions">
+            <button class="btn btn--primary buyNow" type="button">Comprar ahora</button>
+            <button class="btn btn--ghost details" type="button">Ver más</button>
+          </div>
+        </article>
+
+        <article class="teaCard" data-tea="terere-citrico">
+          <div class="teaCard__top">
+            <span class="tag">Tereré</span>
+            <h3>Refrescante Cítrico</h3>
+            <div class="teaCard__media">
+              <img src="img/Terere - Citrico.jpeg" alt="Refrescante Cítrico" loading="lazy">
+            </div>
+            <p class="muted">
+              Cedrón, naranja desecada, citronela y menta para un tereré intensamente fresco y aromático.
+            </p>
+          </div>
+          <ul class="teaSpecs">
+            <li><strong>Notas:</strong> Menta, Citronela</li>
+            <li><strong>Intensidad:</strong> Fresco</li>
+            <li><strong>Momento:</strong> Días de calor</li>
+          </ul>
+          <div class="teaCard__actions">
+            <button class="btn btn--primary buyNow" type="button">Comprar ahora</button>
+            <button class="btn btn--ghost details" type="button">Ver más</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Línea TÉ -->
+    <section class="section section--te" id="tes">
+      <div class="section__head">
+        <h2>Línea TÉ</h2>
+        <p class="muted">Cada té tiene su espacio. Elegí el que te llame hoy.</p>
+      </div>
+
+      <div class="grid">
+        <article class="teaCard" data-tea="te-floral-especial">
+          <div class="teaCard__top">
+            <span class="tag">Té</span>
+            <h3>Floral Especial</h3>
+            <div class="teaCard__media">
+              <img src="img/Te - Floral esp.jpeg" alt="Floral especial" loading="lazy">
+            </div>
+            <p class="muted">Hibiscus, caléndula y stevia: vibrante, colorido y suavemente dulce.</p>
+          </div>
+          <ul class="teaSpecs">
+            <li><strong>Notas:</strong> Hibiscus, Caléndula</li>
+            <li><strong>Intensidad:</strong> Aromático alegre</li>
+            <li><strong>Momento:</strong> Cualquier momento</li>
+          </ul>
+          <div class="teaCard__actions">
+            <button class="btn btn--primary buyNow" type="button">Comprar ahora</button>
+            <button class="btn btn--ghost details" type="button">Ver más</button>
+          </div>
+        </article>
+
+        <article class="teaCard" data-tea="te-detox-hebral">
+          <div class="teaCard__top">
+            <span class="tag">Té</span>
+            <h3>Detox Hebral</h3>
+            <div class="teaCard__media">
+              <img src="img/Te - Detox .jpeg" alt="Detox Hebral" loading="lazy">
+            </div>
+            <p class="muted">Hibiscus, moringa y manzanilla: depurativo, equilibrado y aromático.</p>
+          </div>
+          <ul class="teaSpecs">
+            <li><strong>Notas:</strong> Manzanilla, Moringa</li>
+            <li><strong>Intensidad:</strong> Suave</li>
+            <li><strong>Momento:</strong> Pesadez energética</li>
+          </ul>
+          <div class="teaCard__actions">
+            <button class="btn btn--primary buyNow" type="button">Comprar ahora</button>
+            <button class="btn btn--ghost details" type="button">Ver más</button>
+          </div>
+        </article>
+
+        <article class="teaCard" data-tea="te-digestivo-suave">
+          <div class="teaCard__top">
+            <span class="tag">Té</span>
+            <h3>Digestivo Suave</h3>
+            <div class="teaCard__media">
+              <img src="img/Te - Digestivo.jpeg" alt="Digestivo suave" loading="lazy">
+            </div>
+            <p class="muted">Manzanilla, cedrón y caléndula: delicado y reconfortante.</p>
+          </div>
+          <ul class="teaSpecs">
+            <li><strong>Notas:</strong> Manzanilla, Cedrón</li>
+            <li><strong>Intensidad:</strong> Calma</li>
+            <li><strong>Momento:</strong> Después de comer</li>
+          </ul>
+          <div class="teaCard__actions">
+            <button class="btn btn--primary buyNow" type="button">Comprar ahora</button>
+            <button class="btn btn--ghost details" type="button">Ver más</button>
+          </div>
+        </article>
+
+        <article class="teaCard" data-tea="te-diuretico-natural">
+          <div class="teaCard__top">
+            <span class="tag">Té</span>
+            <h3>Diurético Natural</h3>
+            <div class="teaCard__media">
+              <img src="img/Te - Diuretico.jpeg" alt="Diurético Natural" loading="lazy">
+            </div>
+            <p class="muted">Cola de caballo, boldo y cedrón: purificante y liviano.</p>
+          </div>
+          <ul class="teaSpecs">
+            <li><strong>Notas:</strong> Cola de caballo, Boldo</li>
+            <li><strong>Intensidad:</strong> Suave</li>
+            <li><strong>Momento:</strong> Para sentirse liviano</li>
+          </ul>
+          <div class="teaCard__actions">
+            <button class="btn btn--primary buyNow" type="button">Comprar ahora</button>
+            <button class="btn btn--ghost details" type="button">Ver más</button>
+          </div>
+        </article>
+
+        <article class="teaCard" data-tea="te-floral-dulce">
+          <div class="teaCard__top">
+            <span class="tag">Té</span>
+            <h3>Floral Dulce</h3>
+            <div class="teaCard__media">
+              <img src="img/Te - Floral.jpeg" alt="Floral Dulce" loading="lazy">
+            </div>
+            <p class="muted">Jazmín, manzanilla y cedrón: delicado y naturalmente dulce.</p>
+          </div>
+          <ul class="teaSpecs">
+            <li><strong>Notas:</strong> Jazmín, Manzanilla</li>
+            <li><strong>Intensidad:</strong> Armonioso</li>
+            <li><strong>Momento:</strong> Tranquilidad</li>
+          </ul>
+          <div class="teaCard__actions">
+            <button class="btn btn--primary buyNow" type="button">Comprar ahora</button>
+            <button class="btn btn--ghost details" type="button">Ver más</button>
+          </div>
+        </article>
+
+        <article class="teaCard" data-tea="te-calor-corporal">
+          <div class="teaCard__top">
+            <span class="tag">Té</span>
+            <h3>Calor Corporal</h3>
+            <div class="teaCard__media">
+              <img src="img/Te - Calor.jpeg" alt="Calor corporal" loading="lazy">
+            </div>
+            <p class="muted">Canela, jengibre y marcela: cálido, perfecto para días fríos.</p>
+          </div>
+          <ul class="teaSpecs">
+            <li><strong>Notas:</strong> Canela, Jengibre</li>
+            <li><strong>Intensidad:</strong> Intenso</li>
+            <li><strong>Momento:</strong> Días de frío</li>
+          </ul>
+          <div class="teaCard__actions">
+            <button class="btn btn--primary buyNow" type="button">Comprar ahora</button>
+            <button class="btn btn--ghost details" type="button">Ver más</button>
+          </div>
+        </article>
+
+        <article class="teaCard" data-tea="te-relajante-suave">
+          <div class="teaCard__top">
+            <span class="tag">Té</span>
+            <h3>Relajante Suave</h3>
+            <div class="teaCard__media">
+              <img src="img/Te - Relajante.jpeg" alt="Relajante suave" loading="lazy">
+            </div>
+            <p class="muted">Cedrón, jazmín y stevia: ligero, floral y relajante.</p>
+          </div>
+          <ul class="teaSpecs">
+            <li><strong>Notas:</strong> Cedrón, Stevia</li>
+            <li><strong>Intensidad:</strong> Fresco</li>
+            <li><strong>Momento:</strong> Tarde</li>
+          </ul>
+          <div class="teaCard__actions">
+            <button class="btn btn--primary buyNow" type="button">Comprar ahora</button>
+            <button class="btn btn--ghost details" type="button">Ver más</button>
+          </div>
+        </article>
+
+        <article class="teaCard" data-tea="te-relajante-profundo">
+          <div class="teaCard__top">
+            <span class="tag">Té</span>
+            <h3>Relajante Profundo</h3>
+            <div class="teaCard__media">
+              <img src="img/Te - Relajante pr.jpeg" alt="Relajante profundo" loading="lazy">
+            </div>
+            <p class="muted">Pasionaria, melisa y manzanilla: especialmente calmante.</p>
+          </div>
+          <ul class="teaSpecs">
+            <li><strong>Notas:</strong> Pasionaria, Melisa</li>
+            <li><strong>Intensidad:</strong> Relajación</li>
+            <li><strong>Momento:</strong> Ansiedad / noche</li>
+          </ul>
+          <div class="teaCard__actions">
+            <button class="btn btn--primary buyNow" type="button">Comprar ahora</button>
+            <button class="btn btn--ghost details" type="button">Ver más</button>
+          </div>
+        </article>
+
+        <article class="teaCard" data-tea="te-anti-resfrio">
+          <div class="teaCard__top">
+            <span class="tag">Té</span>
+            <h3>Anti Resfrío</h3>
+            <div class="teaCard__media">
+              <img src="img/Te - Resfrio.jpeg" alt="Anti resfrío" loading="lazy">
+            </div>
+            <p class="muted">Eucalipto, jengibre, hibiscus y menta: refrescante y reconfortante.</p>
+          </div>
+          <ul class="teaSpecs">
+            <li><strong>Notas:</strong> Eucalipto, Jengibre</li>
+            <li><strong>Intensidad:</strong> Poco ácido / fresco</li>
+            <li><strong>Momento:</strong> Temporadas frías</li>
+          </ul>
+          <div class="teaCard__actions">
+            <button class="btn btn--primary buyNow" type="button">Comprar ahora</button>
+            <button class="btn btn--ghost details" type="button">Ver más</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Línea MATE -->
+    <section class="section section--mate" id="mate">
+  <div class="section__head">
+    <h2>Línea MATE</h2>
+    <p class="muted">Sabores que acompañan el ritual.</p>
+  </div>
+
+  <div class="mateLayout">
+    <!-- IZQUIERDA: productos -->
+    <div class="mateProductsGrid">
+
+      <article class="teaCard" data-tea="mate-detox">
+        <div class="teaCard__top">
+          <span class="tag">Mate</span>
+          <h3>Mate Detox</h3>
+
+          <div class="teaCard__media">
+            <img src="img/Mate - Detox.jpeg" alt="Mate Detox" loading="lazy">
+          </div>
+
+          <p class="muted">Cola de caballo, boldo, cedrón y menta: liviano y purificante.</p>
+        </div>
+
+        <ul class="teaSpecs">
+          <li><strong>Notas:</strong> Cola de caballo, Menta</li>
+          <li><strong>Intensidad:</strong> Suave</li>
+          <li><strong>Momento:</strong> Bienestar natural</li>
+        </ul>
+
+        <div class="teaCard__actions">
+          <button class="btn btn--primary buyNow" type="button">Comprar ahora</button>
+          <button class="btn btn--ghost details" type="button">Ver más</button>
+        </div>
+      </article>
+
+      <article class="teaCard" data-tea="mate-digestivo">
+        <div class="teaCard__top">
+          <span class="tag">Mate</span>
+          <h3>Mate Digestivo</h3>
+
+          <div class="teaCard__media">
+            <img src="img/Mate - Digestivo.jpeg" alt="Mate Digestivo" loading="lazy">
+          </div>
+
+          <p class="muted">Burrito, poleo, marcela y cedrón: ideal para el consumo cotidiano.</p>
+        </div>
+
+        <ul class="teaSpecs">
+          <li><strong>Notas:</strong> Burrito, Poleo</li>
+          <li><strong>Intensidad:</strong> Suave</li>
+          <li><strong>Momento:</strong> Durante el día</li>
+        </ul>
+
+        <div class="teaCard__actions">
+          <button class="btn btn--primary buyNow" type="button">Comprar ahora</button>
+          <button class="btn btn--ghost details" type="button">Ver más</button>
+        </div>
+      </article>
+
+      <article class="teaCard" data-tea="mate-energia">
+        <div class="teaCard__top">
+          <span class="tag">Mate</span>
+          <h3>Mate Energía Natural</h3>
+
+          <div class="teaCard__media">
+            <img src="img/Mate - Energia.jpeg" alt="Mate Energía Natural" loading="lazy">
+          </div>
+
+          <p class="muted">Té verde, jengibre, menta y canela: estimulante y equilibrado.</p>
+        </div>
+
+        <ul class="teaSpecs">
+          <li><strong>Notas:</strong> Té verde, Menta</li>
+          <li><strong>Intensidad:</strong> Enérgico</li>
+          <li><strong>Momento:</strong> Mañana</li>
+        </ul>
+
+        <div class="teaCard__actions">
+          <button class="btn btn--primary buyNow" type="button">Comprar ahora</button>
+          <button class="btn btn--ghost details" type="button">Ver más</button>
+        </div>
+      </article>
+
+      <article class="teaCard" data-tea="mate-anti-frio">
+        <div class="teaCard__top">
+          <span class="tag">Mate</span>
+          <h3>Mate Anti Frío</h3>
+
+          <div class="teaCard__media">
+            <img src="img/Mate - frio.jpeg" alt="Mate Anti Frío" loading="lazy">
+          </div>
+
+          <p class="muted">Muña muña, jengibre, laurel y canela: cálido y reconfortante.</p>
+        </div>
+
+        <ul class="teaSpecs">
+          <li><strong>Notas:</strong> Muña muña, Laurel</li>
+          <li><strong>Intensidad:</strong> Intenso</li>
+          <li><strong>Momento:</strong> Jornadas frías</li>
+        </ul>
+
+        <div class="teaCard__actions">
+          <button class="btn btn--primary buyNow" type="button">Comprar ahora</button>
+          <button class="btn btn--ghost details" type="button">Ver más</button>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- DERECHA: galería (ocupa el hueco grande sí o sí) -->
+    <aside class="mateGalleryWide" aria-label="Momentos de mate">
+      <h3 class="mateGalleryTitle">Momentos de mate</h3>
+
+      <div class="mateGalleryPhotos">
+        <img src="img/Momentos mate 1.jpeg" alt="Momento de mate 1" loading="lazy">
+        <img src="img/Momentos mate 2.jpeg" alt="Momento de mate 2" loading="lazy">
+      </div>
+
+      <p class="muted small" style="margin:12px 0 0;">Ritual, aroma y calma en cada cebada.</p>
+    </aside>
+  </div>
+</section>
+
+
+ 
+
+    <!-- Contacto -->
+    <footer class="footer" id="contacto">
+      <div class="footer__content">
+        <h3>Contacto</h3>
+        <p class="muted">Pedinos recomendaciones según lo que te gusta.</p>
+        <div class="footer__links">
+          <a class="link" href="https://wa.me/2657346519" target="_blank" rel="noreferrer">WhatsApp</a>
+          <a class="link" href="https://www.instagram.com/tierradecalma.vm" target="_blank" rel="noreferrer">Instagram</a>
+          <a class="link" href="https://mail.google.com/mail/?view=cm&fs=1&to=tierradecalma99@gmail.com&su=Consulta%20Tierra%20de%20Calma">Email</a>
+        </div>
+        <small class="muted">© <span id="year"></span> Tierra de Calma</small>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Modal “Ver más” -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal__backdrop" data-close="true"></div>
+    <div class="modal__card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal__head">
+        <h3 id="modalTitle">Detalles</h3>
+        <button class="iconBtn" id="closeModal" aria-label="Cerrar">✕</button>
+      </div>
+      <div class="modal__body" id="modalBody"></div>
+      <div class="modal__foot">
+        <button class="btn btn--primary" id="modalBuy" type="button">Comprar ahora</button>
+        <button class="btn btn--ghost" data-close="true" type="button">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Login -->
+  <div class="modal" id="loginModal" aria-hidden="true">
+    <div class="modal__backdrop" data-login-close="true"></div>
+
+    <div class="modal__card" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+      <div class="modal__head">
+        <h3 id="loginTitle">Iniciar sesión</h3>
+        <button class="iconBtn" id="closeLogin" aria-label="Cerrar" type="button">✕</button>
+      </div>
+
+      <div class="modal__body">
+        <p class="muted">Para comprar por seguridad, iniciá sesión.</p>
+
+        <form class="form" id="loginForm">
+
+  <label>
+    Email
+    <input id="loginEmail" type="email" required placeholder="tuemail@gmail.com"/>
+  </label>
+
+  <label>
+    Contraseña
+    <input id="loginPass" type="password" required placeholder="••••••••"/>
+  </label>
+
+  <button class="btn btn--primary" type="submit">
+    Iniciar sesión
+  </button>
+
+  <!-- BOTÓN REGISTRARSE -->
+  <button class="btn btn--ghost" id="registerBtn" type="button">
+    Registrarse
+  </button>
+
+  <div class="divider">
+    <span>o</span>
+  </div>
+
+  <!-- GOOGLE -->
+  <div id="g_id_onload"
+  data-client_id="729104131389-47fvko17gj0cu4keh08q78mjn7v10mba.apps.googleusercontent.com"
+  data-callback="handleCredentialResponse"
+  data-auto_prompt="false">
+</div>
+
+<div id="googleBtn" class="g_id_signin"
+  data-type="standard"
+  data-shape="pill"
+  data-theme="outline"
+  data-text="continue_with"
+  data-size="large"
+  data-locale="es">
+</div>
+
+
+  <p class="muted small" style="margin:0;">
+    *Demo: la sesión se guarda en este navegador.
+  </p>
+</form>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Compra -->
+<div class="modal" id="buyModal" aria-hidden="true">
+  <div class="modal__backdrop" data-buy-close="true"></div>
+
+  <div class="modal__card" role="dialog" aria-modal="true" aria-labelledby="buyTitle">
+    <div class="modal__head">
+      <h3 id="buyTitle">Finalizar compra</h3>
+      <button class="iconBtn" id="closeBuy" aria-label="Cerrar" type="button">✕</button>
+    </div>
+
+    <div class="modal__body">
+  <div id="buyBody"></div>
+
+  <!-- Contenedor Mercado Pago -->
+  <div id="mp_wallet_container" style="margin-top:14px;"></div>
+</div>
+
+
+    <div class="modal__foot">
+      <button class="btn btn--primary" id="payBtn" type="button">Pagar</button>
+      <button class="btn btn--ghost" data-buy-close="true" type="button">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+
+  <script src="app.js"></script>
+</body>
+</html>
