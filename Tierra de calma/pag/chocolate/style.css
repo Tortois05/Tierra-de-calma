@@ -969,3 +969,122 @@ footer{margin:30px 0 60px;color:#3d2402;font-size:14px;text-align:center}
   padding: 14px !important;
   width: 100% !important;
 }
+
+/* ===== FIX RESPONSIVE MOBILE CHOCOLATE ===== */
+
+/* Que el sitio ocupe todo el ancho real */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* En horizontal/desktop chico, eliminar márgenes blancos */
+@media (orientation: landscape) and (max-width: 950px) {
+  .container,
+  .hero {
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .hero {
+    border-radius: 0 !important;
+  }
+}
+
+/* Mobile vertical más compacto */
+@media (max-width: 520px) {
+  .container {
+    padding: 0 10px !important;
+  }
+
+  .hero {
+    width: calc(100% - 20px) !important;
+    margin: 10px auto !important;
+    border-radius: 18px !important;
+  }
+
+  .hero-slide {
+    min-height: 270px !important;
+  }
+
+  .hero-slide .hero-content {
+    left: 18px !important;
+    right: 18px !important;
+    bottom: 16px !important;
+  }
+
+  .hero h2 {
+    font-size: 26px !important;
+    line-height: 1.05 !important;
+  }
+
+  .hero p {
+    font-size: 15px !important;
+    line-height: 1.35 !important;
+  }
+
+  .cat-title {
+    font-size: 28px !important;
+    padding-left: 6px;
+  }
+
+  .cat-scroll {
+    gap: 10px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  .cat-scroll .card {
+    flex: 0 0 68% !important;
+  }
+
+  .card .thumb {
+    aspect-ratio: 1 / 1 !important;
+  }
+
+  .card .body {
+    padding: 10px !important;
+  }
+
+  .title {
+    font-size: 16px !important;
+    line-height: 1.2 !important;
+  }
+
+  .muted {
+    font-size: 13px !important;
+  }
+
+  .price {
+    font-size: 17px !important;
+  }
+
+  .add {
+    padding: 10px 12px !important;
+    font-size: 14px !important;
+  }
+
+  .qty {
+    transform: scale(.9);
+    transform-origin: left center;
+  }
+}
+
+/* iPhone muy angosto */
+@media (max-width: 390px) {
+  .cat-scroll .card {
+    flex: 0 0 72% !important;
+  }
+
+  .hero-slide {
+    min-height: 250px !important;
+  }
+
+  .hero h2 {
+    font-size: 23px !important;
+  }
+}
