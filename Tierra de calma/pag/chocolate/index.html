@@ -134,6 +134,23 @@
   }
 }
 </style>
+  <style>
+@media (orientation: landscape) and (max-width: 950px) {
+  html,
+  body {
+    background: url("img/Texture2.jpg") center center / cover repeat !important;
+    background-color: #e8dcc7 !important;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url("img/Texture2.jpg") center center / cover repeat;
+    z-index: -1;
+  }
+}
+</style>
 </head>
 <body>
   <header>
