@@ -147,10 +147,23 @@ document.addEventListener('DOMContentLoaded', () => {
       if (typeof showLoader === 'function') showLoader('Redirigiendo al pago…');
 
       const r = await fetch(`${BACKEND}/create_preference`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ items })
-      });
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    items,
+    payerEmail: mail,
+
+    customer: {
+      name,
+      email: mail,
+      document: document.getElementById('chkDoc')?.value.trim() || "",
+      address: document.getElementById('chkAddress')?.value.trim() || "",
+      phone: document.getElementById('chkPhone')?.value.trim() || ""
+    },
+
+    note: document.getElementById('chkNote')?.value.trim() || ""
+  })
+});
 
       const data = await r.json();
 
