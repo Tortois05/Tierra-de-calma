@@ -95,6 +95,45 @@
   }
 }
 </style>
+  <style>
+@media (orientation: landscape) and (max-width: 950px) {
+  .cat-scroll .card {
+    flex: 0 0 24% !important;
+    min-width: 24% !important;
+    max-width: 24% !important;
+  }
+
+  .card .thumb {
+    aspect-ratio: 1 / 0.72 !important;
+  }
+
+  .card .body {
+    padding: 7px !important;
+  }
+
+  .title {
+    font-size: 12px !important;
+  }
+
+  .price {
+    font-size: 13px !important;
+  }
+
+  .muted {
+    font-size: 11px !important;
+  }
+
+  .add {
+    font-size: 11px !important;
+    padding: 7px 8px !important;
+  }
+
+  .qty {
+    transform: scale(.8) !important;
+    transform-origin: left center !important;
+  }
+}
+</style>
 </head>
 <body>
   <header>
