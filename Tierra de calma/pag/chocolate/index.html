@@ -8,341 +8,178 @@
   <!-- Fuentes y CSS -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Almendra+SC&family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <style>
-@media (max-width: 1200px) {
-  body {
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow-x: hidden !important;
-  }
-
-  header,
-  .hero,
-  .container,
-  .section,
-  .cat-section {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
-
-  .container {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
-
-  .cat-scroll {
-    width: 100% !important;
-    padding: 8px 10px 16px !important;
-    gap: 10px !important;
-  }
-
-  .cat-scroll .card {
-    flex: 0 0 46% !important;
-    min-width: 46% !important;
-    max-width: 46% !important;
-  }
-
-  .card .thumb {
-    aspect-ratio: 1 / 0.85 !important;
-  }
-
-  .card .body {
-    padding: 8px !important;
-  }
-
-  .title {
-    font-size: 13px !important;
-  }
-
-  .price {
-    font-size: 14px !important;
-  }
-
-  .muted {
-    font-size: 12px !important;
-  }
-
-  .add {
-    font-size: 12px !important;
-    padding: 8px 9px !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .cat-scroll .card {
-    flex: 0 0 48% !important;
-    min-width: 48% !important;
-    max-width: 48% !important;
-  }
-
-  .hero {
-    border-radius: 0 !important;
-    width: 100% !important;
-  }
-
-  .hero-slide {
-    min-height: 250px !important;
-  }
-
-  .hero h2 {
-    font-size: 22px !important;
-  }
-
-  .hero p {
-    font-size: 13px !important;
-  }
-}
-</style>
-  <style>
-@media (orientation: landscape) and (max-width: 950px) {
-  .cat-scroll .card {
-    flex: 0 0 24% !important;
-    min-width: 24% !important;
-    max-width: 24% !important;
-  }
-
-  .card .thumb {
-    aspect-ratio: 1 / 0.72 !important;
-  }
-
-  .card .body {
-    padding: 7px !important;
-  }
-
-  .title {
-    font-size: 12px !important;
-  }
-
-  .price {
-    font-size: 13px !important;
-  }
-
-  .muted {
-    font-size: 11px !important;
-  }
-
-  .add {
-    font-size: 11px !important;
-    padding: 7px 8px !important;
-  }
-
-  .qty {
-    transform: scale(.8) !important;
-    transform-origin: left center !important;
-  }
-}
-</style>
-  <style>
-@media (orientation: landscape) and (max-width: 950px) {
-  html,
-  body {
-    background: url("img/Texture2.jpg") center center / cover repeat !important;
-    background-color: #e8dcc7 !important;
-  }
-
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: url("img/Texture2.jpg") center center / cover repeat;
-    z-index: -1;
-  }
-}
-</style>
 </head>
 <body>
   <header>
     <div class="container nav">
-      <div class="logo">
-        
-        
-      </div>
-      <div class="actions">
-        <button class="icon-btn" id="loginBtn">Iniciar sesión</button>
-        <div class="user-pill" id="userPill" style="display:none">
-  <div class="avatar" id="userAvatar">U</div>
-  <span id="userName">Usuario</span>
-  <button class="icon-btn" id="logoutBtn">Salir</button>
-</div>
+      <div class="logo"></div>
 
-        <button class="icon-btn" id="cartBtn">Carrito <span class="badge" id="cartCount">0</span></button>
+      <div class="actions">
+        <button class="icon-btn" id="loginBtn" type="button">Iniciar sesión</button>
+
+        <div class="user-pill" id="userPill" style="display:none">
+          <div class="avatar" id="userAvatar">U</div>
+          <span id="userName">Usuario</span>
+          <button class="icon-btn" id="logoutBtn" type="button">Salir</button>
+        </div>
+
+        <button class="icon-btn" id="cartBtn" type="button">
+          Carrito <span class="badge" id="cartCount">0</span>
+        </button>
       </div>
     </div>
   </header>
 
   <!-- Portadas dinámicas / hero -->
-<section class="hero" id="hero">
-  <div class="hero-controls" id="heroDots"></div>
-</section>
+  <section class="hero" id="hero">
+    <div class="hero-controls" id="heroDots"></div>
+  </section>
 
-<!-- Modal Quiénes Somos -->
-<div class="modal" id="aboutModal">
-  <div class="sheet about-sheet">
-    <div class="about-head">
-      <h4 id="aboutTitle">Quiénes somos</h4>
-      <button class="btn ghost" id="closeAbout" type="button">Cerrar</button>
+  <!-- Modal Quiénes Somos -->
+  <div class="modal" id="aboutModal">
+    <div class="sheet about-sheet">
+      <div class="about-head">
+        <h4 id="aboutTitle">Quiénes somos</h4>
+        <button class="btn ghost" id="closeAbout" type="button">Cerrar</button>
+      </div>
+      <p class="muted" id="aboutBody"></p>
     </div>
-    <p class="muted" id="aboutBody"></p>
   </div>
-</div>
-
-
 
   <!-- Catálogo -->
   <section class="container section">
     <div id="catalogo-secciones"></div>
   </section>
- 
 
   <!-- Drawer Carrito -->
   <div class="drawer" id="drawer">
     <div class="backdrop" data-close-drawer></div>
     <aside class="panel">
-      <div class="row"><h4>Tu carrito</h4><button class="icon-btn" data-close-drawer>Seguir comprando</button></div>
+      <div class="row">
+        <h4>Tu carrito</h4>
+        <button class="icon-btn" data-close-drawer type="button">Seguir comprando</button>
+      </div>
+
       <div class="cart-items" id="cartItems"></div>
+
       <div class="total">
         <strong>Total</strong>
         <strong id="cartTotal">$0</strong>
       </div>
-      <button class="checkout" id="checkoutBtn">Ir al checkout</button>
+
+      <button class="checkout" id="checkoutBtn" type="button">Ir al checkout</button>
     </aside>
   </div>
 
   <!-- Modal Login -->
   <div class="modal" id="loginModal">
-<div class="sheet auth-sheet">
-  <div class="auth-tabs" role="tablist" aria-label="Autenticación">
-    <button class="auth-tab is-active" id="tabLogin" type="button" role="tab" aria-selected="true">
-      Iniciar sesión
-    </button>
-    <button class="auth-tab" id="tabRegister" type="button" role="tab" aria-selected="false">
-      Registrarse
-    </button>
-  </div>
-
-  <!-- LOGIN -->
-  <div id="loginPanel" class="auth-panel" role="tabpanel" aria-labelledby="tabLogin">
-    <h4 class="auth-title">Iniciar sesión</h4>
-    <p class="muted">Para continuar con tu compra, iniciá sesión.</p>
-
-    <div class="field">
-      <label>Email</label>
-      <input class="input" id="email" type="email" placeholder="tu@correo.com" autocomplete="email"/>
-      <div class="auth-error" id="errLoginEmail"></div>
-    </div>
-
-    <div class="field">
-      <label>Contraseña</label>
-      <div class="auth-passrow">
-        <input class="input" id="password" type="password" placeholder="••••••" autocomplete="current-password"/>
-        <button class="auth-eye" id="togglePassLogin" type="button" aria-label="Mostrar/ocultar contraseña">👁</button>
+    <div class="sheet auth-sheet">
+      <div class="auth-tabs" role="tablist" aria-label="Autenticación">
+        <button class="auth-tab is-active" id="tabLogin" type="button" role="tab" aria-selected="true">
+          Iniciar sesión
+        </button>
+        <button class="auth-tab" id="tabRegister" type="button" role="tab" aria-selected="false">
+          Registrarse
+        </button>
       </div>
-      <div class="auth-error" id="errLoginPass"></div>
-    </div>
 
-    <div class="auth-row">
-      <label class="auth-check">
-        <input type="checkbox" id="rememberMe" />
-        <span>Recordarme</span>
-      </label>
-      <a href="#" class="auth-link" id="forgotPass">¿Olvidaste tu contraseña?</a>
-    </div>
+      <!-- LOGIN -->
+      <div id="loginPanel" class="auth-panel" role="tabpanel" aria-labelledby="tabLogin">
+        <h4 class="auth-title">Iniciar sesión</h4>
+        <p class="muted">Para continuar con tu compra, iniciá sesión.</p>
 
-    <div class="auth-actions">
-      <button class="btn ghost" data-close-login>Cancelar</button>
-      <button class="btn primary" id="doLogin" type="button">Entrar</button>
-    </div>
-    <div class="auth-divider"><span>o</span></div>
+        <div class="field">
+          <label>Email</label>
+          <input class="input" id="email" type="email" placeholder="tu@correo.com" autocomplete="email" />
+          <div class="auth-error" id="errLoginEmail"></div>
+        </div>
 
-<button class="btn ghost google-btn" id="googleLogin" type="button" style="width:100%">
-  <span class="g-icon" aria-hidden="true">
-    <svg viewBox="0 0 48 48" width="18" height="18">
-      <path fill="#EA4335" d="M24 9.5c3.54 0 6.29 1.52 7.73 2.79l5.3-5.3C33.87 4.05 29.4 2 24 2 14.73 2 6.83 7.39 3.3 15.23l6.17 4.78C11.04 13.27 16.96 9.5 24 9.5z"/>
-      <path fill="#4285F4" d="M46.1 24.5c0-1.64-.15-2.86-.47-4.13H24v7.82h12.65c-.26 2.03-1.67 5.08-4.8 7.13l7.38 5.71c4.43-4.09 6.87-10.1 6.87-14.53z"/>
-      <path fill="#FBBC05" d="M9.47 28.01A14.5 14.5 0 0 1 8.7 24c0-1.4.24-2.75.72-4.01l-6.17-4.78A23.98 23.98 0 0 0 2 24c0 3.87.93 7.53 2.58 10.79l6.89-6.78z"/>
-      <path fill="#34A853" d="M24 46c6.4 0 11.77-2.1 15.7-5.72l-7.38-5.71c-1.98 1.38-4.64 2.34-8.32 2.34-7.04 0-12.96-3.77-14.53-9.01l-6.89 6.78C6.83 40.61 14.73 46 24 46z"/>
-    </svg>
-  </span>
-  <span>Continuar con Google</span>
-</button>
+        <div class="field">
+          <label>Contraseña</label>
+          <div class="auth-passrow">
+            <input class="input" id="password" type="password" placeholder="••••••" autocomplete="current-password" />
+            <button class="auth-eye" id="togglePassLogin" type="button" aria-label="Mostrar/ocultar contraseña">👁</button>
+          </div>
+          <div class="auth-error" id="errLoginPass"></div>
+        </div>
 
-    <div class="auth-foot">
-      ¿No tenés cuenta? <a href="#" id="goRegister">Registrate</a>
-    </div>
-  </div>
+        <div class="auth-row">
+          <label class="auth-check">
+            <input type="checkbox" id="rememberMe" />
+            <span>Recordarme</span>
+          </label>
+          <a href="#" class="auth-link" id="forgotPass">¿Olvidaste tu contraseña?</a>
+        </div>
 
-  <!-- REGISTER -->
-  <div id="registerPanel" class="auth-panel hidden" role="tabpanel" aria-labelledby="tabRegister">
-    <h4 class="auth-title">Crear cuenta</h4>
-    <p class="muted">Registro simple y rápido.</p>
+        <div class="auth-actions">
+          <button class="btn ghost" data-close-login type="button">Cancelar</button>
+          <button class="btn primary" id="doLogin" type="button">Entrar</button>
+        </div>
 
-    <div class="field">
-      <label>Nombre</label>
-      <input class="input" id="regName" placeholder="Tu nombre" autocomplete="name"/>
-      <div class="auth-error" id="errRegName"></div>
-    </div>
+        <div class="auth-divider"><span>o</span></div>
 
-    <div class="field">
-      <label>Email</label>
-      <input class="input" id="regEmail" type="email" placeholder="tu@correo.com" autocomplete="email"/>
-      <div class="auth-error" id="errRegEmail"></div>
-    </div>
+        <button class="btn ghost google-btn" id="googleLogin" type="button" style="width:100%">
+          <span class="g-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" width="18" height="18">
+              <path fill="#EA4335" d="M24 9.5c3.54 0 6.29 1.52 7.73 2.79l5.3-5.3C33.87 4.05 29.4 2 24 2 14.73 2 6.83 7.39 3.3 15.23l6.17 4.78C11.04 13.27 16.96 9.5 24 9.5z" />
+              <path fill="#4285F4" d="M46.1 24.5c0-1.64-.15-2.86-.47-4.13H24v7.82h12.65c-.26 2.03-1.67 5.08-4.8 7.13l7.38 5.71c4.43-4.09 6.87-10.1 6.87-14.53z" />
+              <path fill="#FBBC05" d="M9.47 28.01A14.5 14.5 0 0 1 8.7 24c0-1.4.24-2.75.72-4.01l-6.17-4.78A23.98 23.98 0 0 0 2 24c0 3.87.93 7.53 2.58 10.79l6.89-6.78z" />
+              <path fill="#34A853" d="M24 46c6.4 0 11.77-2.1 15.7-5.72l-7.38-5.71c-1.98 1.38-4.64 2.34-8.32 2.34-7.04 0-12.96-3.77-14.53-9.01l-6.89 6.78C6.83 40.61 14.73 46 24 46z" />
+            </svg>
+          </span>
+          <span>Continuar con Google</span>
+        </button>
 
-    <div class="field">
-      <label>Contraseña</label>
-      <div class="auth-passrow">
-        <input class="input" id="regPass" type="password" placeholder="••••••" autocomplete="new-password"/>
-        <button class="auth-eye" id="togglePassReg" type="button" aria-label="Mostrar/ocultar contraseña">👁</button>
+        <div class="auth-foot">
+          ¿No tenés cuenta? <a href="#" id="goRegister">Registrate</a>
+        </div>
       </div>
-      <div class="auth-hint">Mínimo 6 caracteres.</div>
-      <div class="auth-error" id="errRegPass"></div>
-    </div>
 
-    <div class="field">
-      <label>Repetir contraseña</label>
-      <input class="input" id="regPass2" type="password" placeholder="••••••" autocomplete="new-password"/>
-      <div class="auth-error" id="errRegPass2"></div>
-    </div>
+      <!-- REGISTER -->
+      <div id="registerPanel" class="auth-panel hidden" role="tabpanel" aria-labelledby="tabRegister">
+        <h4 class="auth-title">Crear cuenta</h4>
+        <p class="muted">Registro simple y rápido.</p>
 
-    <button class="btn primary" id="doRegister" type="button" style="width:100%">Crear cuenta</button>
+        <div class="field">
+          <label>Nombre</label>
+          <input class="input" id="regName" placeholder="Tu nombre" autocomplete="name" />
+          <div class="auth-error" id="errRegName"></div>
+        </div>
 
-    <div class="auth-divider"><span>o</span></div>
+        <div class="field">
+          <label>Email</label>
+          <input class="input" id="regEmail" type="email" placeholder="tu@correo.com" autocomplete="email" />
+          <div class="auth-error" id="errRegEmail"></div>
+        </div>
 
-    <div class="auth-foot">
-      ¿Ya tenés cuenta? <a href="#" id="goLogin">Iniciar sesión</a>
-    </div>
+        <div class="field">
+          <label>Contraseña</label>
+          <div class="auth-passrow">
+            <input class="input" id="regPass" type="password" placeholder="••••••" autocomplete="new-password" />
+            <button class="auth-eye" id="togglePassReg" type="button" aria-label="Mostrar/ocultar contraseña">👁</button>
+          </div>
+          <div class="auth-hint">Mínimo 6 caracteres.</div>
+          <div class="auth-error" id="errRegPass"></div>
+        </div>
 
-    <div class="auth-actions">
-      <button class="btn ghost" data-close-login>Cancelar</button>
-    </div>
-  </div>
-</div>
+        <div class="field">
+          <label>Repetir contraseña</label>
+          <input class="input" id="regPass2" type="password" placeholder="••••••" autocomplete="new-password" />
+          <div class="auth-error" id="errRegPass2"></div>
+        </div>
 
+        <button class="btn primary" id="doRegister" type="button" style="width:100%">Crear cuenta</button>
 
-  
+        <div class="auth-divider"><span>o</span></div>
 
-  <!-- REGISTRO -->
-  <div id="registerBlock" class="auth-block hidden">
-    <div class="field"><label>Nombre</label><input class="input" id="regName" placeholder="Tu nombre"/></div>
-    <div class="field"><label>Email</label><input class="input" id="regEmail" type="email" placeholder="tu@correo.com"/></div>
-    <div class="field"><label>Contraseña</label><input class="input" id="regPass" type="password" placeholder="••••••"/></div>
+        <div class="auth-foot">
+          ¿Ya tenés cuenta? <a href="#" id="goLogin">Iniciar sesión</a>
+        </div>
 
-    <button class="btn primary" id="doRegister" style="width:100%">Crear cuenta</button>
-    <button class="btn ghost google-btn" id="googleSignup">Continuar con Google</button>
-
-    <div class="auth-linkrow">
-      <span>¿Ya tenés cuenta? <a href="#" id="openLogin">Iniciar sesión</a></span>
-      <span></span>
-    </div>
-
-    <div class="auth-actions">
-      <button class="btn ghost" data-close-login>Cancelar</button>
-    </div>
-  </div>
-</div>
-
+        <div class="auth-actions">
+          <button class="btn ghost" data-close-login type="button">Cancelar</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -350,29 +187,39 @@
   <div class="modal" id="checkoutModal">
     <div class="sheet">
       <h4>Checkout</h4>
-      <p class="muted">Completá tus datos para pagar. (Integración de pago lista para conectar)</p>
+      <p class="muted">Completá tus datos para pagar.</p>
+
       <div class="row-gap">
         <div class="field" style="flex:1">
           <label>Nombre y apellido</label>
-          <input class="input" id="chkName" placeholder="Nombre y Apellido"/>
+          <input class="input" id="chkName" placeholder="Nombre y Apellido" />
         </div>
         <div class="field" style="flex:1">
           <label>Documento</label>
-          <input class="input" id="chkDni" placeholder="DNI / CUIT"/>
+          <input class="input" id="chkDni" placeholder="DNI / CUIT" />
         </div>
       </div>
-      <div class="field"><label>Dirección</label><input class="input" id="chkAddr" placeholder="Calle 123, Villa Mercedes"/></div>
-      <div class="field"><label>Correo</label><input class="input" id="chkMail" placeholder="tu@correo.com"/></div>
-      <div class="field"><label>Teléfono</label><input class="input" id="chkPhone" placeholder="11 1234 5678"/></div>
+
       <div class="field">
-  <label>Detalle opcional del pedido</label>
-  <textarea 
-    class="input" 
-    id="chkNote" 
-    rows="3"
-    placeholder="Ej: dedicatoria, horario de entrega, aclaraciones..."
-  ></textarea>
-</div>
+        <label>Dirección</label>
+        <input class="input" id="chkAddr" placeholder="Calle 123, Villa Mercedes" />
+      </div>
+
+      <div class="field">
+        <label>Correo</label>
+        <input class="input" id="chkMail" type="email" placeholder="tu@correo.com" />
+      </div>
+
+      <div class="field">
+        <label>Teléfono</label>
+        <input class="input" id="chkPhone" placeholder="11 1234 5678" />
+      </div>
+
+      <div class="field">
+        <label>Detalle opcional del pedido</label>
+        <textarea class="input" id="chkNote" rows="3" placeholder="Ej: dedicatoria, horario de entrega, aclaraciones..."></textarea>
+      </div>
+
       <div class="field">
         <label>Método de pago</label>
         <select class="input" id="chkMethod">
@@ -381,73 +228,40 @@
           <option value="efc">Efectivo/Transferencia</option>
         </select>
       </div>
+
       <div class="row" style="align-items:center;justify-content:space-between;margin-top:4px">
         <div class="muted" id="chkSummary">Total a pagar: $0</div>
-        <button class="btn primary" id="payNow">Pagar ahora</button>
+        <button class="btn primary" id="payNow" type="button">Pagar ahora</button>
       </div>
+
       <footer>
-        <button class="btn ghost" data-close-checkout>Cancelar</button>
+        <button class="btn ghost" data-close-checkout type="button">Cancelar</button>
       </footer>
     </div>
   </div>
-  
-<section id="contactConsultas">
 
-  <div style="
-    max-width:700px;
-    margin:60px auto;
-    background:#fff8ef;
-    padding:35px;
-    border-radius:24px;
-    box-shadow:0 15px 40px rgba(0,0,0,.25);
-    color:#2b1a10;
-  ">
+  <!-- Formulario de consultas -->
+  <section id="contactConsultas">
+    <div style="max-width:700px;margin:60px auto;background:#fff8ef;padding:35px;border-radius:24px;box-shadow:0 15px 40px rgba(0,0,0,.25);color:#2b1a10;">
+      <h2 style="margin-bottom:10px;color:#2b1a10;">Consultas y pedidos personalizados</h2>
+      <p style="margin-bottom:25px;color:#6a5443;">¿Tenés dudas o querés hacernos una consulta?</p>
 
-    <h2 style="margin-bottom:10px;color:#2b1a10;">
-      Consultas y pedidos personalizados
-    </h2>
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <input id="contactName" type="text" placeholder="Tu nombre" style="padding:14px;border-radius:14px;border:1px solid #c7a27c;background:white;color:#2b1a10;">
 
-    <p style="margin-bottom:25px;color:#6a5443;">
-      ¿Tenés dudas o querés hacernos una consulta?
-    </p>
+        <input id="contactMail" type="email" placeholder="tu@correo.com" style="padding:14px;border-radius:14px;border:1px solid #c7a27c;background:white;color:#2b1a10;">
 
-    <div style="display:flex;flex-direction:column;gap:16px;">
+        <textarea id="contactMessage" rows="5" placeholder="Escribí tu consulta..." style="padding:14px;border-radius:14px;border:1px solid #c7a27c;background:white;color:#2b1a10;resize:none;"></textarea>
 
-     <input
-  id="contactName"
-  type="text"
-  placeholder="Tu nombre"
-  style="padding:14px;border-radius:14px;border:1px solid #c7a27c;background:white;color:#2b1a10;"
->
+        <button id="sendContactBtn" type="button" style="padding:15px;border:none;border-radius:999px;background:#8b5a2b;color:white;font-weight:600;cursor:pointer;">
+          Enviar consulta
+        </button>
 
-<input
-  id="contactMail"
-  type="email"
-  placeholder="tu@correo.com"
-  style="padding:14px;border-radius:14px;border:1px solid #c7a27c;background:white;color:#2b1a10;"
->
-
-<textarea
-  id="contactMessage"
-  rows="5"
-  placeholder="Escribí tu consulta..."
-  style="padding:14px;border-radius:14px;border:1px solid #c7a27c;background:white;color:#2b1a10;resize:none;"
-></textarea>
-
-<button
-  id="sendContactBtn"
-  type="button"
-  style="padding:15px;border:none;border-radius:999px;background:#8b5a2b;color:white;font-weight:600;cursor:pointer;"
->
-  Enviar consulta
-</button>
-
-<p id="contactStatus" style="margin:0;color:#6a5443;font-size:14px;"></p>
-
+        <p id="contactStatus" style="margin:0;color:#6a5443;font-size:14px;"></p>
+      </div>
     </div>
-  </div>
-</section>
-  
+  </section>
+
   <footer>
     © <span id="year"></span> Tierra de Calma — Villa Mercedes, San Luis
   </footer>
@@ -461,11 +275,11 @@
   <script src="https://accounts.google.com/gsi/client" async defer></script>
 
   <div id="loader" class="loader hidden" aria-hidden="false">
-  <div class="loader-card">
-    <div class="spinner"></div>
-    <div class="loader-text">Cargando…</div>
+    <div class="loader-card">
+      <div class="spinner"></div>
+      <div class="loader-text">Cargando…</div>
+    </div>
   </div>
-</div>
-
 </body>
 </html>
+
