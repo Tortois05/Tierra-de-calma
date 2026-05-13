@@ -861,3 +861,43 @@ footer{margin:30px 0 60px;color:#3d2402;font-size:14px;text-align:center}
 .contactFormCard textarea.input::placeholder {
   color: #9b8978 !important;
 }
+
+#contactConsultas {
+  padding: 80px 18px !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+#contactConsultas .contactFormCard {
+  width: 100% !important;
+  max-width: 640px !important;
+  background: #fff8eb !important;
+  color: #2b1a10 !important;
+  border-radius: 26px !important;
+  padding: 34px !important;
+  box-shadow: 0 20px 50px rgba(0,0,0,.28) !important;
+}
+
+#contactConsultas h2,
+#contactConsultas p,
+#contactConsultas label {
+  color: #2b1a10 !important;
+}
+
+#contactConsultas input,
+#contactConsultas textarea {
+  background: #fff !important;
+  color: #2b1a10 !important;
+  border: 1px solid #b78a5b !important;
+  border-radius: 16px !important;
+  padding: 14px !important;
+  width: 100% !important;
+}
+
+#contactConsultas button {
+  background: #8b4513 !important;
+  color: #fff !important;
+  border-radius: 999px !important;
+  padding: 14px !important;
+  width: 100% !important;
+}
