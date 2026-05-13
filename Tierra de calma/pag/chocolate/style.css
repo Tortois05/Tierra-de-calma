@@ -727,3 +727,95 @@ footer{margin:30px 0 60px;color:#3d2402;font-size:14px;text-align:center}
   color: #f1efeb;
 }
 
+.contactFormSection {
+  padding: 64px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.contactFormCard {
+  width: 100%;
+  max-width: 620px;
+  background: rgba(255, 248, 235, 0.96);
+  color: #2b1a10;
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(95, 58, 32, 0.16);
+}
+
+.contactFormCard h2 {
+  margin: 0 0 8px;
+  font-size: 28px;
+  color: #3a2416;
+}
+
+.contactFormCard .muted {
+  color: #6d5a4c;
+  margin-bottom: 24px;
+}
+
+.contactFormCard .field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.contactFormCard label {
+  font-weight: 600;
+  color: #3a2416;
+}
+
+.contactFormCard .input {
+  width: 100%;
+  border: 1px solid rgba(95, 58, 32, 0.22);
+  border-radius: 16px;
+  padding: 13px 15px;
+  font-size: 15px;
+  color: #2b1a10;
+  background: #fffdf8;
+  outline: none;
+}
+
+.contactFormCard .input::placeholder {
+  color: #9a8878;
+}
+
+.contactFormCard .input:focus {
+  border-color: #7a4f2a;
+  box-shadow: 0 0 0 4px rgba(122, 79, 42, 0.12);
+}
+
+.contactFormCard textarea.input {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contactFormCard .btn,
+.contactFormCard button {
+  width: 100%;
+  border: none;
+  border-radius: 999px;
+  padding: 14px 20px;
+  font-weight: 700;
+  cursor: pointer;
+  background: linear-gradient(135deg, #6c3f22, #9b6a3c);
+  color: #fff;
+  box-shadow: 0 12px 26px rgba(108, 63, 34, 0.24);
+}
+
+@media (max-width: 600px) {
+  .contactFormSection {
+    padding: 42px 14px;
+  }
+
+  .contactFormCard {
+    padding: 24px 18px;
+    border-radius: 20px;
+  }
+
+  .contactFormCard h2 {
+    font-size: 24px;
+  }
+}
